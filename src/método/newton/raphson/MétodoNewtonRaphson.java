@@ -34,10 +34,18 @@ public class MétodoNewtonRaphson {
         }
         boolean vlblnTerminoEncontrado = false;
         for (int n = formula.length()-1; n >= 0; n--) { 
-            char c = formula.charAt (n); 
-            if( c == '-' || c == '+'){
+            char vlchrCaracter = formula.charAt (n); 
+            if( vlchrCaracter == '-' || vlchrCaracter == '+'){
                 vlintNumeroDeTerminos++;
                 vlblnTerminoEncontrado = true;
+            }
+            //Se revisa que el signo - o + no pertenezca a una potencia 
+            else if(vlchrCaracter == '^' && vlblnTerminoEncontrado){
+                vlintNumeroDeTerminos--;
+                vlblnTerminoEncontrado = false;
+            }
+            else {
+                vlblnTerminoEncontrado = false;
             }
         }
         if(vlblnPrimerTerminoContado){
